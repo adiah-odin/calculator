@@ -46,8 +46,10 @@ $buttons: (
 	border-radius: 10px;
 
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(4, 22%);
 	grid-template-rows: repeat(5, 1fr);
+	gap: 1rem 4%;
+
 
 	grid-template-areas: 
 		'seven	eight	nine	del'
@@ -61,4 +63,38 @@ $buttons: (
 			grid-area: #{$button};
 		}
 	}
+
+	&__button {
+		border: 0;
+		border-radius: 5px;
+
+		width: 100%;
+		font-size: var(--fs-500);
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&--input,
+		&--operation {
+			aspect-ratio: 1;
+			background-color: var(--clr-key-primary);
+			color: var(--clr-text-dark);
+			box-shadow: 0 6px var(--clr-key-primary-shadow);
+		}
+
+		&--control {
+			font-size: var(--fs-400);
+			// color: var(--clr-text-light);
+			background-color: var(--clr-key-secondary);
+			color: #fff;
+			box-shadow: 0 6px var(--clr-key-secondary-shadow);
+		}
+
+		&--equal {
+			background-color: var(--clr-key-accent);
+			box-shadow: 0 6px var(--clr-key-accent-shadow);
+		}
+	}
+
 }
