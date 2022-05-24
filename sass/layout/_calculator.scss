@@ -122,12 +122,17 @@ $buttons: (
 			background-color: var(--clr-key-secondary);
 			color: #fff;
 			box-shadow: 0 6px var(--clr-key-secondary-shadow);
+
+			&[data-name='equal'] {
+				background-color: var(--clr-key-accent);
+				box-shadow: 0 6px var(--clr-key-accent-shadow);			
+			}
 		}
 
-		&--equal {
-			background-color: var(--clr-key-accent);
-			box-shadow: 0 6px var(--clr-key-accent-shadow);
-		}
+		// &--equal {
+		// 	background-color: var(--clr-key-accent);
+		// 	box-shadow: 0 6px var(--clr-key-accent-shadow);
+		// }
 
 		&--input:active,
 		&--operation:active,

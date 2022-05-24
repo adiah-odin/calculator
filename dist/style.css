@@ -226,7 +226,7 @@ select {
   color: #fff;
   box-shadow: 0 6px var(--clr-key-secondary-shadow);
 }
-.keypad__button--equal {
+.keypad__button--control[data-name=equal] {
   background-color: var(--clr-key-accent);
   box-shadow: 0 6px var(--clr-key-accent-shadow);
 }
