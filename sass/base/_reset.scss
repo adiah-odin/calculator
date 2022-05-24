@@ -28,16 +28,16 @@ h4,
 h5,
 h6,
 p {
-	font-weight: 400;
+	font-weight: 700;
 }
 
 // Set up the body
 body {
 	font-family: var(--ff-sans);
-	font-size: var(--fs-400);
-	font-weight: 400;
-	background-color: var(--clr-light);
-	color: var(--clr-dark);
+	font-size: var(--fs-500);
+	font-weight: 700;
+	background-color: var(--clr-bg-main);
+	color: var(--clr-text-dark);
 	line-height: 1.5;
 	min-height: 100vh;
 

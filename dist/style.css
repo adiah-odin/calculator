@@ -1,23 +1,25 @@
 :root {
-  --clr-dark: hsl(0, 0%, 8%);
-  --clr-gray: hsl(0, 0%, 41%);
-  --clr-light: hsl(0, 0%, 98%);
-  --ff-sans: "Roboto", sans-serif;
-  --fs-300: 1rem;
-  --fs-400: 1rem;
-  --fs-500: 1.563rem;
-  --fs-600: 1.953rem;
-  --fs-700: 2.125rem;
-  --fs-800: 3.052rem;
+  --clr-text-dark: hsl(60, 10%, 19%);
+  --clr-text-light: hsl(0, 0, 100%);
+  --clr-bg-main: hsl(0, 0%, 90%);
+  --clr-bg-keypad: hsl(0, 5%, 81%);
+  --clr-bg-screen: hsl(0, 0%, 93%);
+  --clr-key-primary: hsl(45, 7%, 89%);
+  --clr-key-primary-shadow: hsl(35, 11%, 61%);
+  --clr-key-secondary: hsl(185, 42%, 37%);
+  --clr-key-secondary-shadow: hsl(185, 58%, 25%);
+  --clr-key-accent: hsl(25, 98%, 40%);
+  --clr-key-accent-shadow: hsl(25, 99%, 27%);
+  --ff-sans: "League Spartan", sans-serif;
+  --fs-400: 1.3125rem;
+  --fs-500: 2.1875rem;
+  --fs-600: 2.5rem;
 }
 @media (min-width: 43.75em) {
   :root {
-    --fs-300: 1rem;
-    --fs-400: 1.1875rem;
-    --fs-500: 2rem;
-    --fs-600: 2.827rem;
-    --fs-700: 4.9375rem;
-    --fs-800: 5.653rem;
+    --fs-400: 1.5625rem;
+    --fs-500: 2.5rem;
+    --fs-600: 3.75rem;
   }
 }
 
@@ -46,15 +48,15 @@ h4,
 h5,
 h6,
 p {
-  font-weight: 400;
+  font-weight: 700;
 }
 
 body {
   font-family: var(--ff-sans);
-  font-size: var(--fs-400);
-  font-weight: 400;
-  background-color: var(--clr-light);
-  color: var(--clr-dark);
+  font-size: var(--fs-500);
+  font-weight: 700;
+  background-color: var(--clr-bg-main);
+  color: var(--clr-text-dark);
   line-height: 1.5;
   min-height: 100vh;
   overflow-x: hidden;
@@ -88,6 +90,15 @@ select {
     scroll-behavior: auto !important;
   }
 }
+.page-wrapper {
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;

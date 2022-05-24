@@ -3,12 +3,28 @@
 :root {
 
 	// colors
-	--clr-dark: hsl(0, 0%, 8%);
-	--clr-gray: hsl(0, 0%, 41%);
-	--clr-light: hsl(0, 0%, 98%);
 
+	// text colors
+	--clr-text-dark: hsl(60, 10%, 19%);
+	--clr-text-light: hsl(0, 0, 100%);
+
+	// background colors
+	--clr-bg-main: hsl(0, 0%, 90%);
+	--clr-bg-keypad: hsl(0, 5%, 81%);
+	--clr-bg-screen: hsl(0, 0%, 93%);
+
+	// key colors
+	--clr-key-primary: hsl(45, 7%, 89%);
+	--clr-key-primary-shadow: hsl(35, 11%, 61%);
+
+	--clr-key-secondary: hsl(185, 42%, 37%);
+	--clr-key-secondary-shadow: hsl(185, 58%, 25%); 
+
+	--clr-key-accent: hsl(25, 98%, 40%);
+	--clr-key-accent-shadow: hsl(25, 99%, 27%);
+	
 	// font-families
-	--ff-sans: 'Roboto', sans-serif;
+	--ff-sans: 'League Spartan', sans-serif;
 
 	// font-sizes from ../abstract/type
 	// Might need to add more breakpoints
