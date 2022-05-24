@@ -1,3 +1,5 @@
+@use '../abstracts/' as abs;
+
 $buttons: (
 	'zero',
 	'one',
@@ -22,11 +24,22 @@ $buttons: (
 .page-wrapper {
 	min-height: 100vh;
 	padding: 2rem 1.5rem;
+
+	@include abs.breakpoint(large) {
+		padding: 1rem 0;
+		width: 40%;
+		max-width: abs.rem(540);
+		margin-inline: auto;
+	}
 }
 
 .title {
 	font-size: var(--fs-600);
 	margin-bottom: 2rem;
+
+	@include abs.breakpoint(large) {
+		font-size: var(--fs-500);
+	}
 }
 
 .screen {
@@ -58,6 +71,11 @@ $buttons: (
 		'dot	zero	divide	mult'
 		'reset	reset	equal	equal';
 
+	@include abs.breakpoint(large) {
+		grid-template-columns: repeat(4, 21%);
+		gap: 1.75rem 5%;
+	}
+
 	@each $button in $buttons {
 		button[data-name='#{$button}'] {
 			grid-area: #{$button};
@@ -81,6 +99,10 @@ $buttons: (
 			background-color: var(--clr-key-primary);
 			color: var(--clr-text-dark);
 			box-shadow: 0 6px var(--clr-key-primary-shadow);
+
+			@include abs.breakpoint(large) {
+				aspect-ratio: 100/60;
+			}
 		}
 
 		&--control {
