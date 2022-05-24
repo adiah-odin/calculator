@@ -1,3 +1,24 @@
+$buttons: (
+	'zero',
+	'one',
+	'two',
+	'three',
+	'four',
+	'five',
+	'six',
+	'seven',
+	'eight',
+	'nine',
+	'dot',
+	'divide',
+	'mult',
+	'minus',
+	'plus',
+	'del',
+	'reset',
+	'equal' 
+);
+
 .page-wrapper {
 	min-height: 100vh;
 	padding: 2rem 1.5rem;
@@ -15,5 +36,29 @@
 	align-items: center;
 	font-size: var(--fs-600);
 	padding: 1rem 1.25rem;
+	margin-bottom: 1.5rem;
 	border-radius: 9px;
+}
+
+.keypad {
+	padding: 1.5rem;
+	background-color: var(--clr-bg-keypad);
+	border-radius: 10px;
+
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+
+	grid-template-areas: 
+		'seven	eight	nine	del'
+		'four	five	six		plus'
+		'one	two		three	minus'
+		'dot	zero	divide	mult'
+		'reset	reset	equal	equal';
+
+	@each $button in $buttons {
+		button[data-name='#{$button}'] {
+			grid-area: #{$button};
+		}
+	}
 }

@@ -107,7 +107,72 @@ select {
   align-items: center;
   font-size: var(--fs-600);
   padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
   border-radius: 9px;
+}
+
+.keypad {
+  padding: 1.5rem;
+  background-color: var(--clr-bg-keypad);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-areas: "seven	eight	nine	del" "four	five	six		plus" "one	two		three	minus" "dot	zero	divide	mult" "reset	reset	equal	equal";
+}
+.keypad button[data-name=zero] {
+  grid-area: zero;
+}
+.keypad button[data-name=one] {
+  grid-area: one;
+}
+.keypad button[data-name=two] {
+  grid-area: two;
+}
+.keypad button[data-name=three] {
+  grid-area: three;
+}
+.keypad button[data-name=four] {
+  grid-area: four;
+}
+.keypad button[data-name=five] {
+  grid-area: five;
+}
+.keypad button[data-name=six] {
+  grid-area: six;
+}
+.keypad button[data-name=seven] {
+  grid-area: seven;
+}
+.keypad button[data-name=eight] {
+  grid-area: eight;
+}
+.keypad button[data-name=nine] {
+  grid-area: nine;
+}
+.keypad button[data-name=dot] {
+  grid-area: dot;
+}
+.keypad button[data-name=divide] {
+  grid-area: divide;
+}
+.keypad button[data-name=mult] {
+  grid-area: mult;
+}
+.keypad button[data-name=minus] {
+  grid-area: minus;
+}
+.keypad button[data-name=plus] {
+  grid-area: plus;
+}
+.keypad button[data-name=del] {
+  grid-area: del;
+}
+.keypad button[data-name=reset] {
+  grid-area: reset;
+}
+.keypad button[data-name=equal] {
+  grid-area: equal;
 }
 
 .sr-only {
