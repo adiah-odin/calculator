@@ -202,6 +202,12 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: opacity 300ms, transform 200ms ease-in-out, box-shadow 300ms;
+}
+.keypad__button:hover {
+  opacity: 0.75;
+  transform: scale(1.1);
 }
 .keypad__button--input, .keypad__button--operation {
   aspect-ratio: 1;
@@ -223,6 +229,10 @@ select {
 .keypad__button--equal {
   background-color: var(--clr-key-accent);
   box-shadow: 0 6px var(--clr-key-accent-shadow);
+}
+.keypad__button--input:active, .keypad__button--operation:active, .keypad__button--control:active, .keypad__button--equal:active {
+  box-shadow: none;
+  transform: translateY(6px);
 }
 
 .sr-only {
