@@ -83,9 +83,6 @@ const controls = [
 const keypad = document.getElementById('keypad');
 const screen = document.getElementById('screen');
 
-// numbers and operators have the same class of keypad input?
-// no numbers and operator separate classes have the same style.
-
 let currentNumber = screen.innerText;
 let equation = [];
 
@@ -123,14 +120,16 @@ controls.forEach(control => {
 	keypad.append(controlBtn);
 })
 
+// Control buttons
+
+
 // The equal button
 const equal = document.getElementById('equal');
 equal.onclick = () => {
-	// Check if everything is ready
+	// Check that an operation has been selected
 	if (equation[0]) {
 		solveEquation();
 	}
-
 }
 
 // Reset button
@@ -141,8 +140,9 @@ resetBtn.onclick = reset;
 const deleteBtn = document.getElementById('del');
 deleteBtn.onclick = del;
 
-// Operator functions
 
+
+// Operator functions
 function plus(num1, num2) {
 	return num1 + num2;
 }
@@ -168,7 +168,6 @@ function operate(operation, num1, num2) {
 	if (typeof(num1) != 'number' || typeof(num2) != 'number') {
 		return 'ERROR';
 	}
-
 	return operation(num1, num2);
 }
 
@@ -182,35 +181,31 @@ function inputValues(input) {
 		currentNumber = digit;
 	} else {
 		// add the new digit at the end of current number
-
-		// currentNumber += digit;
-		// screen.innerText = new Intl.NumberFormat().format(currentNumber)
-		// console.log(new Intl.NumberFormat().format(currentNumber));
-
 		// set a max number of digits
 		if (currentNumber.length <= 10) {
 			currentNumber += digit;
 		}
 	}
+
 	screen.innerText = currentNumber;
 
 	if (currentNumber.includes('.')) {
 		keypad.querySelector('[data-name=dot]').setAttribute('disabled', '');
-	} else {
-		keypad.querySelector('[data-name=dot').removeAttribute('disabled');
 	}
 }
 
 function addOperator(operator) {
 	const operation =  operator.dataset.name;
-
 	// check if another operator was already added first
+
 	if (equation[0]) {
 		solveEquation();
 	}
 
+	// Add operation and num1 to equation array
 	equation[0] = window[operation];
 	equation[1] = Number(currentNumber);
+	// reset currentNumber to take values of num2
 	currentNumber = '0';
 }
 
@@ -238,6 +233,10 @@ function del() {
 			currentNumber = '0';
 		}
 		screen.innerText = currentNumber;
+
+		if (!currentNumber.includes('.')) {
+			keypad.querySelector('[data-name=dot').removeAttribute('disabled');
+		}
 	}
 	console.log(currentNumber);
 }
