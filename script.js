@@ -85,7 +85,7 @@ const keypad = document.getElementById('keypad');
 // no numbers and operator separate classes have the same style.
 
 const numberBtns = numbers.map(number => (
-	`<button data-name=${number.name} class="keypad__button keypad__button--input">${number.value}</button>`
+	`<button data-name=${number.name} data-value=${number.value} class="keypad__button keypad__button--input">${number.value}</button>`
 )).join('');
 
 const operationBtns = operators.map(operator => (
@@ -98,4 +98,29 @@ const controlBtns = controls.map(control => (
 
 keypad.innerHTML = numberBtns + operationBtns + controlBtns;
 
-console.log(numberBtns);
+
+// Operator functions
+
+function add(num1, num2) {
+	if (typeof(num1) != 'number' || typeof(num2) != 'number') {
+		return 'ERROR';
+	}
+	return num1 + num2;
+}
+
+function subtract(num1, num2) {
+	return num1 - num2;
+}
+
+function multiply(num1, num2) {
+	return num1 * num2;
+}
+
+function divide(num1, num2) {
+	if (num2 === 0) {
+		return 'This is impossible';
+	}
+	return num1 / num2;
+}
+
+console.log(divide(0, 0));
