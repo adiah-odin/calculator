@@ -86,9 +86,8 @@ const screen = document.getElementById('screen');
 // numbers and operators have the same class of keypad input?
 // no numbers and operator separate classes have the same style.
 
-// const numberBtns = numbers.map(number => (
-// 	`<button data-name=${number.name} data-value=${number.value} class="keypad__button keypad__button--input">${number.value}</button>`
-// )).join('');
+let currentNumber = screen.innerText;
+let equation = [];
 
 numbers.forEach(number => {
 	const numberBtn = document.createElement('button');
@@ -103,36 +102,45 @@ numbers.forEach(number => {
 	keypad.append(numberBtn);
 })
 
-// const operationBtns = operators.map(operator => (
-// 	`<button data-name=${operator.operation} class="keypad__button keypad__button--operation">${operator.display}</button>`
-// )).join('');
 operators.forEach(operator => {
 	const operatorBtn = document.createElement('button');
 	operatorBtn.classList.add('keypad__button', 'keypad__button--operation');
 	operatorBtn.dataset.name = operator.operation;
 	operatorBtn.innerText = operator.display;
 
+	operatorBtn.onclick = () => addOperator(event.target);
+
 	keypad.append(operatorBtn);
 })
 
-const controlBtns = controls.map(control => (
-	`<button data-name=${control.name} class="keypad__button keypad__button--control">${control.display}</button>`
-)).join('');
+controls.forEach(control => {
+	const controlBtn = document.createElement('button');
+	controlBtn.classList.add('keypad__button', 'keypad__button--control');
+	controlBtn.dataset.name = control.name;
+	controlBtn.innerText = control.display;
+	controlBtn.id = control.name;
 
-// keypad.innerHTML = numberBtns + operationBtns + controlBtns;
+	keypad.append(controlBtn);
+})
 
+// The equal button
+const equal = document.getElementById('equal');
+equal.onclick = () => {
+	equation[2] = Number(currentNumber);
+	solveEquation();
+}
 
 // Operator functions
 
-function add(num1, num2) {
+function plus(num1, num2) {
 	return num1 + num2;
 }
 
-function subtract(num1, num2) {
+function minus(num1, num2) {
 	return num1 - num2;
 }
 
-function multiply(num1, num2) {
+function mult(num1, num2) {
 	return num1 * num2;
 }
 
@@ -156,14 +164,14 @@ function operate(operation, num1, num2) {
 
 function inputValues(input) {
 	const digit = input.dataset.value;
-	let currentNumber = screen.innerText;
 
 	// check if the value is 0 first
 	if (currentNumber === '0' && digit != '.') {
 		// replace the 0 with the first digit
-		screen.innerText = digit;
+		currentNumber = digit;
 	} else {
 		// add the new digit at the end of current number
+
 		// currentNumber += digit;
 		// screen.innerText = new Intl.NumberFormat().format(currentNumber)
 		// console.log(new Intl.NumberFormat().format(currentNumber));
@@ -171,7 +179,24 @@ function inputValues(input) {
 		// set a max number of digits
 		if (currentNumber.length <= 10) {
 			currentNumber += digit;
-			screen.innerText = currentNumber
 		}
 	}
+	screen.innerText = currentNumber;
+}
+
+function addOperator(operator) {
+	const operation =  operator.dataset.name;
+
+	// check if another operator was already added first
+
+	equation[0] = window[operation];
+	equation[1] = Number(currentNumber);
+	currentNumber = '0';
+}
+
+function solveEquation() {
+	const solution = operate(...equation);
+	currentNumber = solution;
+	equation[1] = solution;
+	screen.innerText = solution;
 }
