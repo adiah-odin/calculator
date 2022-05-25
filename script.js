@@ -82,6 +82,7 @@ const controls = [
 
 const keypad = document.getElementById('keypad');
 const screen = document.getElementById('screen');
+const decimalPoint = keypad.querySelector('[data-name=dot');
 
 let currentNumber = screen.innerText;
 let equation = [];
@@ -144,22 +145,22 @@ deleteBtn.onclick = del;
 
 // Operator functions
 function plus(num1, num2) {
-	return num1 + num2;
+	return roundSolution(num1 + num2);
 }
 
 function minus(num1, num2) {
-	return num1 - num2;
+	return roundSolution(num1 - num2);
 }
 
 function mult(num1, num2) {
-	return num1 * num2;
+	return roundSolution(num1 * num2);
 }
 
 function divide(num1, num2) {
 	if (num2 === 0) {
 		return 'This is impossible';
 	}
-	return num1 / num2;
+	return roundSolution(num1 / num2);
 }
 
 // Call an operation function along with two numbers
@@ -190,7 +191,7 @@ function inputValues(input) {
 	screen.innerText = currentNumber;
 
 	if (currentNumber.includes('.')) {
-		keypad.querySelector('[data-name=dot]').setAttribute('disabled', '');
+		decimalPoint.setAttribute('disabled', '');
 	}
 }
 
@@ -207,11 +208,12 @@ function addOperator(operator) {
 	equation[1] = Number(currentNumber);
 	// reset currentNumber to take values of num2
 	currentNumber = '0';
+	decimalPoint.removeAttribute('disabled');
 }
 
 function solveEquation() {
 	equation[2] = Number(currentNumber);
-	const solution = Math.round(operate(...equation) * 1000) / 1000;
+	const solution = operate(...equation);
 	currentNumber = solution.toString();
 	equation[1] = solution;
 	equation.pop();
@@ -223,6 +225,7 @@ function reset() {
 	currentNumber = '0';
 	equation = [];
 	screen.innerText = currentNumber;
+	decimalPoint.removeAttribute('disabled');
 }
 
 function del() {
@@ -235,8 +238,12 @@ function del() {
 		screen.innerText = currentNumber;
 
 		if (!currentNumber.includes('.')) {
-			keypad.querySelector('[data-name=dot').removeAttribute('disabled');
+			decimalPoint.removeAttribute('disabled');
 		}
 	}
 	console.log(currentNumber);
+}
+
+function roundSolution(solution) {
+	return Math.round(solution*1000)/1000;
 }

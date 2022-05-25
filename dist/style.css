@@ -93,6 +93,9 @@ select {
 .page-wrapper {
   min-height: 100vh;
   padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 @media (min-width: 56.25em) {
   .page-wrapper {

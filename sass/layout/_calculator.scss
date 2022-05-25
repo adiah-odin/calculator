@@ -24,6 +24,9 @@ $buttons: (
 .page-wrapper {
 	min-height: 100vh;
 	padding: 2rem 1.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 
 	@include abs.breakpoint(large) {
 		padding: 1rem 0;
