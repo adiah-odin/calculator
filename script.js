@@ -189,6 +189,12 @@ function inputValues(input) {
 		}
 	}
 	screen.innerText = currentNumber;
+
+	if (currentNumber.includes('.')) {
+		keypad.querySelector('[data-name=dot]').setAttribute('disabled', '');
+	} else {
+		keypad.querySelector('[data-name=dot').removeAttribute('disabled');
+	}
 }
 
 function addOperator(operator) {
