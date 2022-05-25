@@ -190,14 +190,15 @@ function inputValues(input) {
 
 function addOperator(operator) {
 	const operation =  operator.dataset.name;
-	console.log(equation); 
 
 	// check if another operator was already added first
+	if (equation[0]) {
+		solveEquation();
+	}
 
 	equation[0] = window[operation];
 	equation[1] = Number(currentNumber);
 	currentNumber = '0';
-	console.log(equation);
 }
 
 function solveEquation() {
@@ -205,6 +206,8 @@ function solveEquation() {
 	const solution = operate(...equation);
 	currentNumber = solution;
 	equation[1] = solution;
+	equation.pop();
+	equation[0] = null;
 	screen.innerText = solution;
 }
 
