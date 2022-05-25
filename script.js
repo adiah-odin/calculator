@@ -126,8 +126,11 @@ controls.forEach(control => {
 // The equal button
 const equal = document.getElementById('equal');
 equal.onclick = () => {
-	// equation[2] = Number(currentNumber);
-	solveEquation();
+	// Check if everything is ready
+	if (equation[0]) {
+		solveEquation();
+	}
+
 }
 
 // Reset button
