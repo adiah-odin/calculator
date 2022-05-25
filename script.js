@@ -80,13 +80,27 @@ const controls = [
 ];
 
 const keypad = document.getElementById('keypad');
+const screen = document.getElementById('screen');
 
 // numbers and operators have the same class of keypad input?
 // no numbers and operator separate classes have the same style.
 
-const numberBtns = numbers.map(number => (
-	`<button data-name=${number.name} data-value=${number.value} class="keypad__button keypad__button--input">${number.value}</button>`
-)).join('');
+// const numberBtns = numbers.map(number => (
+// 	`<button data-name=${number.name} data-value=${number.value} class="keypad__button keypad__button--input">${number.value}</button>`
+// )).join('');
+
+numbers.forEach(number => {
+	const numberBtn = document.createElement('button');
+	numberBtn.classList.add('keypad__button', 'keypad__button--input');
+	numberBtn.dataset.name = number.name;
+	numberBtn.dataset.value = number.value;
+	numberBtn.innerText = number.value;
+
+	numberBtn.onclick = () => inputValues(event.target);
+
+
+	keypad.append(numberBtn);
+})
 
 const operationBtns = operators.map(operator => (
 	`<button data-name=${operator.operation} class="keypad__button keypad__button--operation">${operator.display}</button>`
@@ -96,7 +110,7 @@ const controlBtns = controls.map(control => (
 	`<button data-name=${control.name} class="keypad__button keypad__button--control">${control.display}</button>`
 )).join('');
 
-keypad.innerHTML = numberBtns + operationBtns + controlBtns;
+// keypad.innerHTML = numberBtns + operationBtns + controlBtns;
 
 
 // Operator functions
@@ -130,4 +144,8 @@ function operate(operation, num1, num2) {
 	return operation(num1, num2);
 }
 
-console.log(operate(add, 1, -9));
+
+function inputValues(input) {
+	console.log(input.dataset.value)
+	const digit = input.dataset.value;
+}
