@@ -126,9 +126,13 @@ controls.forEach(control => {
 // The equal button
 const equal = document.getElementById('equal');
 equal.onclick = () => {
-	equation[2] = Number(currentNumber);
+	// equation[2] = Number(currentNumber);
 	solveEquation();
 }
+
+// Reset button
+const resetBtn = document.getElementById('reset');
+resetBtn.onclick = reset;
 
 // Operator functions
 
@@ -186,17 +190,26 @@ function inputValues(input) {
 
 function addOperator(operator) {
 	const operation =  operator.dataset.name;
+	console.log(equation); 
 
 	// check if another operator was already added first
 
 	equation[0] = window[operation];
 	equation[1] = Number(currentNumber);
 	currentNumber = '0';
+	console.log(equation);
 }
 
 function solveEquation() {
+	equation[2] = Number(currentNumber);
 	const solution = operate(...equation);
 	currentNumber = solution;
 	equation[1] = solution;
 	screen.innerText = solution;
+}
+
+function reset() {
+	currentNumber = '0';
+	equation = [];
+	screen.innerText = currentNumber;
 }
