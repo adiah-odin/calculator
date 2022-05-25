@@ -102,9 +102,6 @@ keypad.innerHTML = numberBtns + operationBtns + controlBtns;
 // Operator functions
 
 function add(num1, num2) {
-	if (typeof(num1) != 'number' || typeof(num2) != 'number') {
-		return 'ERROR';
-	}
 	return num1 + num2;
 }
 
@@ -123,4 +120,14 @@ function divide(num1, num2) {
 	return num1 / num2;
 }
 
-console.log(divide(0, 0));
+// Call an operation function along with two numbers
+function operate(operation, num1, num2) {
+	// make sure only call operate on two numbers
+	if (typeof(num1) != 'number' || typeof(num2) != 'number') {
+		return 'ERROR';
+	}
+
+	return operation(num1, num2);
+}
+
+console.log(operate(add, 1, -9));
