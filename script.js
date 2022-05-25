@@ -1,5 +1,9 @@
 const numbers = [
 	{
+		value: '.',
+		name: 'dot',
+	},
+	{
 		value: 0,
 		name: 'zero',
 	},
@@ -42,10 +46,7 @@ const numbers = [
 ];
 
 const operators = [
-	{
-		display: '.',
-		operation: 'dot',
-	},
+
 	{
 		display: '/',
 		operation: 'divide',
@@ -102,9 +103,17 @@ numbers.forEach(number => {
 	keypad.append(numberBtn);
 })
 
-const operationBtns = operators.map(operator => (
-	`<button data-name=${operator.operation} class="keypad__button keypad__button--operation">${operator.display}</button>`
-)).join('');
+// const operationBtns = operators.map(operator => (
+// 	`<button data-name=${operator.operation} class="keypad__button keypad__button--operation">${operator.display}</button>`
+// )).join('');
+operators.forEach(operator => {
+	const operatorBtn = document.createElement('button');
+	operatorBtn.classList.add('keypad__button', 'keypad__button--operation');
+	operatorBtn.dataset.name = operator.operation;
+	operatorBtn.innerText = operator.display;
+
+	keypad.append(operatorBtn);
+})
 
 const controlBtns = controls.map(control => (
 	`<button data-name=${control.name} class="keypad__button keypad__button--control">${control.display}</button>`
@@ -146,6 +155,23 @@ function operate(operation, num1, num2) {
 
 
 function inputValues(input) {
-	console.log(input.dataset.value)
 	const digit = input.dataset.value;
+	let currentNumber = screen.innerText;
+
+	// check if the value is 0 first
+	if (currentNumber === '0' && digit != '.') {
+		// replace the 0 with the first digit
+		screen.innerText = digit;
+	} else {
+		// add the new digit at the end of current number
+		// currentNumber += digit;
+		// screen.innerText = new Intl.NumberFormat().format(currentNumber)
+		// console.log(new Intl.NumberFormat().format(currentNumber));
+
+		// set a max number of digits
+		if (currentNumber.length <= 10) {
+			currentNumber += digit;
+			screen.innerText = currentNumber
+		}
+	}
 }
