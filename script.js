@@ -137,6 +137,10 @@ equal.onclick = () => {
 const resetBtn = document.getElementById('reset');
 resetBtn.onclick = reset;
 
+// Delete button
+const deleteBtn = document.getElementById('del');
+deleteBtn.onclick = del;
+
 // Operator functions
 
 function plus(num1, num2) {
@@ -224,4 +228,16 @@ function reset() {
 	currentNumber = '0';
 	equation = [];
 	screen.innerText = currentNumber;
+}
+
+function del() {
+	if (currentNumber != '0') {
+		let newNumber = currentNumber.slice(0, -1)
+		currentNumber = newNumber;
+		if (!currentNumber.length) {
+			currentNumber = '0';
+		}
+		screen.innerText = currentNumber;
+	}
+	console.log(currentNumber);
 }
