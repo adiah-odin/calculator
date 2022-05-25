@@ -52,7 +52,7 @@ const operators = [
 		operation: 'divide',
 	},
 	{
-		display: '*',
+		display: 'x',
 		operation:  'mult',
 	},
 	{
@@ -203,12 +203,12 @@ function addOperator(operator) {
 
 function solveEquation() {
 	equation[2] = Number(currentNumber);
-	const solution = operate(...equation);
-	currentNumber = solution;
+	const solution = Math.round(operate(...equation) * 1000) / 1000;
+	currentNumber = solution.toString();
 	equation[1] = solution;
 	equation.pop();
 	equation[0] = null;
-	screen.innerText = solution;
+	screen.innerText = currentNumber;
 }
 
 function reset() {
